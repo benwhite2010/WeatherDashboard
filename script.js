@@ -93,10 +93,10 @@ $(document).ready(function () {
 
         // call giphy API to get a gif based on weather description
         var giphyURL =
-          "https://api.giphy.com/v1/gifs/random?tag=" +
+          "https://api.giphy.com/v1/gifs/random?tag=spongebob+" +
           weatherGif +
           "&api_key=5B5V04Mv9Cc91t58fVPRXATgeTwTn91g&rating=pg";
-
+        // ajax call
         $.ajax({
           url: giphyURL,
           method: "GET",
@@ -122,9 +122,9 @@ $(document).ready(function () {
           // append the weather gif card to the #today container
           $("#today").append(gifCard);
         });
-
+        // call the getForecast function
         getForecast(searchValue);
-
+        // call getUVIndex function
         getUVIndex(data.coord.lat, data.coord.lon);
       },
     });
@@ -153,21 +153,22 @@ $(document).ready(function () {
             var col = $("<div>").addClass("col-md-2");
             var card = $("<div>").addClass("card bg-primary text-white");
             var body = $("<div>").addClass("card-body p-2");
-
+            // variable to display the current date in the card
             var title = $("<h5>")
               .addClass("card-title")
               .text(new Date(data.list[i].dt_txt).toLocaleDateString());
-
+            // variable to select the icon image from the weather API
             var img = $("<img>").attr(
               "src",
               "http://openweathermap.org/img/w/" +
                 data.list[i].weather[0].icon +
                 ".png"
             );
-
+            // variable to create text of the max temperature
             var p1 = $("<p>")
               .addClass("card-text")
               .text("Temp: " + data.list[i].main.temp_max + " °F");
+            // variable to create text of the Humidity from the call
             var p2 = $("<p>")
               .addClass("card-text")
               .text("Humidity: " + data.list[i].main.humidity + "%");
@@ -206,7 +207,7 @@ $(document).ready(function () {
         } else {
           btn.addClass("btn-danger");
         }
-
+        // append the card button to the page inside the id today and the class card-body
         $("#today .card-body").append(uv.append(btn));
       },
     });
@@ -219,11 +220,11 @@ $(document).ready(function () {
 
   // get current history, if any
   var history = JSON.parse(window.localStorage.getItem("history")) || [];
-
+  // This will display the last item that got put into in the history array
   if (history.length > 0) {
     searchWeather(history[history.length - 1]);
   }
-
+  // for loop to invoke makeRow if there is anything stored in history or gets pushed into history
   for (var i = 0; i < history.length; i++) {
     makeRow(history[i]);
   }
