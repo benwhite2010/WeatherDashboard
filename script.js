@@ -27,7 +27,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url:
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
         searchValue +
         "&appid=2ac2ebf2300093dfc5316a5d43f3d603&units=imperial",
       dataType: "json",
@@ -73,7 +73,7 @@ $(document).ready(function () {
         // create image tag to display the correct weather icon
         var img = $("<img>").attr(
           "src",
-          "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+          "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
         );
 
         // merge and add to page
@@ -135,7 +135,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url:
-        "http://api.openweathermap.org/data/2.5/forecast?q=" +
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
         searchValue +
         "&appid=2ac2ebf2300093dfc5316a5d43f3d603&units=imperial",
       dataType: "json",
@@ -160,7 +160,7 @@ $(document).ready(function () {
             // variable to select the icon image from the weather API
             var img = $("<img>").attr(
               "src",
-              "http://openweathermap.org/img/w/" +
+              "https://openweathermap.org/img/w/" +
                 data.list[i].weather[0].icon +
                 ".png"
             );
@@ -187,7 +187,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url:
-        "http://api.openweathermap.org/data/2.5/uvi?appid=2ac2ebf2300093dfc5316a5d43f3d603&lat=" +
+        "https://api.openweathermap.org/data/2.5/uvi?appid=2ac2ebf2300093dfc5316a5d43f3d603&lat=" +
         lat +
         "&lon=" +
         lon,
